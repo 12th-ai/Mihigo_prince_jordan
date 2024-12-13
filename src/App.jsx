@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense,useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import router from './Routers/Index';
 import { Helmet } from 'react-helmet'; // Import Helmet for SEO
