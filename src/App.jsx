@@ -4,8 +4,15 @@ import router from './Routers/Index';
 import { Helmet } from 'react-helmet'; // Import Helmet for SEO
 import Loading from './Components/Loading';
 import ErrorBoundary from './Components/ErrorBoundary';
+import ReactGA from 'react-ga4';
 
 function App() {
+  useEffect(() => {
+    // Trigger page view tracking
+    window.gtag('config', 'G-F57Y947PR2', {
+      page_path: window.location.pathname,
+    });
+  }, []);
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -51,6 +58,15 @@ function App() {
         {/* Structured Data - JSON-LD Schema Markup for enhanced SEO */}
         <script type="application/ld+json">
           {JSON.stringify(schemaMarkup)}
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F57Y947PR2"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
         </script>
 
         {/* Favicon */}
